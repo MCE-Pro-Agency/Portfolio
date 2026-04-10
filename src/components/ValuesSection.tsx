@@ -9,7 +9,7 @@ const values = [
 ];
 
 const ValuesSection = () => (
-  <section id="valeurs" className="py-20 md:py-28 bg-primary">
+  <section id="valeurs" className="py-20 md:py-28 bg-gradient-to-br from-navy-deep via-primary to-navy">
     <div className="container px-4">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
@@ -30,10 +30,10 @@ const ValuesSection = () => (
             transition={{ delay: i * 0.1 }}
             className="text-center group"
           >
-            <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
-              <v.icon size={28} className="text-gold" />
+            <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+              <v.icon size={28} className="text-accent" />
             </div>
-            <div className="text-3xl font-bold text-gold mb-1">{v.number}</div>
+            <div className="text-3xl font-bold text-accent mb-1">{v.number}</div>
             <h3 className="text-lg font-bold text-primary-foreground mb-2">{v.label}</h3>
             <p className="text-sm text-primary-foreground/60">{v.desc}</p>
           </motion.div>

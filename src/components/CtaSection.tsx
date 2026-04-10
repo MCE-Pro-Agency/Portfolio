@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 const CtaSection = () => (
-  <section id="contact" className="py-20 md:py-28 bg-primary relative overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/50 to-transparent" />
+  <section id="contact" className="py-20 md:py-28 bg-gradient-to-br from-navy via-primary to-navy-deep relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(195_100%_50%/0.1),transparent_60%)]" />
     <div className="container px-4 relative z-10 text-center">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
@@ -31,7 +31,7 @@ const CtaSection = () => (
       >
         <a
           href="mailto:contact@mce-agency.com"
-          className="inline-flex px-8 py-4 bg-gold text-accent-foreground font-bold text-base rounded-lg hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/20"
+          className="inline-flex px-8 py-4 bg-accent text-accent-foreground font-bold text-base rounded-lg hover:bg-accent/80 transition-all duration-300 hover:scale-105 shadow-lg shadow-accent/20"
         >
           Demander un devis
         </a>

@@ -36,9 +36,9 @@ const ProcessSection = () => (
             className="relative text-center"
           >
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary flex items-center justify-center shadow-lg">
-              <s.icon size={32} className="text-gold" />
+              <s.icon size={32} className="text-accent" />
             </div>
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gold text-accent-foreground font-bold text-sm flex items-center justify-center shadow">
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-accent text-accent-foreground font-bold text-sm flex items-center justify-center shadow">
               {i + 1}
             </div>
             <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
