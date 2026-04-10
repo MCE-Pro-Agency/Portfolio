@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import heroBg from "@/assets/hero-bg-illustration.jpg";
 
 const HeroSection = () => {
   return (
@@ -6,8 +7,14 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-primary to-navy" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(195_100%_50%/0.15),transparent_60%)]" />
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        width={1920}
+        height={1080}
+      />
+      <div className="absolute inset-0 bg-navy-deep/50" />
 
       <div className="relative z-10 container text-center px-4">
         <motion.h1
