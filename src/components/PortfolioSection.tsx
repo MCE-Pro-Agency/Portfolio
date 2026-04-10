@@ -104,7 +104,7 @@ const PortfolioSection = () => {
                         href={s.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-5 py-2.5 bg-gold text-accent-foreground font-semibold rounded-lg flex items-center gap-2 hover:bg-gold-light transition-colors"
+                        className="px-5 py-2.5 bg-accent text-accent-foreground font-semibold rounded-lg flex items-center gap-2 hover:bg-accent/80 transition-colors"
                       >
                         Voir le site <ExternalLink size={16} />
                       </a>
@@ -184,7 +184,7 @@ const PortfolioSection = () => {
                         href={v.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center hover:bg-gold transition-colors hover:scale-110 duration-300"
+                        className="w-16 h-16 rounded-full bg-accent/90 flex items-center justify-center hover:bg-accent transition-colors hover:scale-110 duration-300"
                       >
                         <Play size={28} className="text-accent-foreground ml-1" />
                       </a>
@@ -212,7 +212,7 @@ const PortfolioSection = () => {
             onClick={() => setLightbox(null)}
           >
             <button
-              className="absolute top-6 right-6 text-primary-foreground hover:text-gold transition-colors"
+              className="absolute top-6 right-6 text-primary-foreground hover:text-accent transition-colors"
               onClick={() => setLightbox(null)}
             >
               <X size={32} />

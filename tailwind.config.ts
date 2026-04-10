@@ -59,6 +59,7 @@ export default {
           DEFAULT: "hsl(var(--navy))",
           deep: "hsl(var(--navy-deep))",
         },
+        "blue-mid": "hsl(var(--blue-mid))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
