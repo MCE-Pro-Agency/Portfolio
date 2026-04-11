@@ -1,20 +1,12 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg-illustration.jpg";
 
 const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-blue"
     >
-      <img
-        src={heroBg}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 bg-navy-deep/50" />
+      <div className="absolute inset-0 bg-navy-deep/30" />
 
       <div className="relative z-10 container text-center px-4">
         <motion.h1
@@ -23,8 +15,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight max-w-4xl mx-auto"
         >
-          Gérez votre agence{" "}
-          <span className="text-gradient-gold">en toute simplicité</span>
+          Donnez vie à votre{" "}
+          <span className="text-gradient-gold">image digitale</span>
         </motion.h1>
 
         <motion.p
