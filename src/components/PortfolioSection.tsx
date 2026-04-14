@@ -5,6 +5,9 @@ import { ExternalLink, Play, X, Globe, Palette, Video } from "lucide-react";
 import site1 from "@/assets/portfolio-site-1.jpg";
 import site2 from "@/assets/portfolio-site-2.jpg";
 import site3 from "@/assets/portfolio-site-3.jpg";
+import site4 from "@/assets/portfolio-site-4.jpg";
+import site5 from "@/assets/portfolio-site-5.jpg";
+import site6 from "@/assets/portfolio-site-6.jpg";
 import logo1 from "@/assets/portfolio-logo-1.jpg";
 import logo2 from "@/assets/portfolio-logo-2.jpg";
 import logo3 from "@/assets/portfolio-logo-3.jpg";
@@ -20,9 +23,12 @@ const categories = [
 type Category = (typeof categories)[number]["key"];
 
 const sites = [
-  { img: site1, name: "Dynasty Apple", desc: "Site corporate & institutionnel", url: "#" },
-  { img: site2, name: "ShopZone", desc: "Plateforme e-commerce moderne", url: "#" },
-  { img: site3, name: "Le Gourmet", desc: "Site vitrine restaurant haut de gamme", url: "#" },
+  { img: site1, name: "Mce Pro Agency", desc: "Agence de communication digitale", url: "https://mce-pro.agency/" },
+  { img: site2, name: "Timalove", desc: "Plateforme site de rencontre", url: "https://www.tima-love.com/" },
+  { img: site3, name: "Garage mécanique Amilly", desc: "Site vitrine garagiste", url: "https://garage-mecanique-amilly.com/" },
+  { img: site5, name: "Delwin Voyage", desc: "Agence de voyage", url: "https://delwinvoyage.sn/" },
+  { img: site4, name: "Clinique Auto", desc: "Garage", url: "https://lacliniqueauto.com/" },
+  { img: site6, name: "RPI", desc: "Site vitrine Immeuble", url: "https://rpi-bardage.com/" },
 ];
 
 const logos = [
@@ -35,7 +41,7 @@ const videos = [
   { img: video1, name: "Film Corporate MCE", desc: "Présentation d'entreprise", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
   { img: video2, name: "Event Highlight", desc: "Couverture événementielle", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
 ];
-
+ 
 const PortfolioSection = () => {
   const [active, setActive] = useState<Category>("sites");
   const [lightbox, setLightbox] = useState<string | null>(null);

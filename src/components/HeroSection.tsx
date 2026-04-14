@@ -25,7 +25,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-6 text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto font-body"
         >
-           vos textes, projets et équipes dans une seule
+          centralisez vos textes, projets et équipes dans une seule
           plateforme. Optimisez votre productivité et développez votre activité avec{" "}
           <span className="text-accent font-semibold">MCE Agency</span>.
         </motion.p>
@@ -37,7 +37,7 @@ const HeroSection = () => {
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="https://wa.me/33XXXXXXXXX"
+            href="https://wa.me/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-accent-foreground font-bold text-base rounded-lg hover:bg-accent/80 transition-all duration-300 hover:scale-105 shadow-lg shadow-accent/20"
