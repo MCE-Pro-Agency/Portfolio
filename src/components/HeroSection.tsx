@@ -25,7 +25,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-6 text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto font-body"
         >
-          Centralisez vos textes, projets et équipes dans une seule
+           vos textes, projets et équipes dans une seule
           plateforme. Optimisez votre productivité et développez votre activité avec{" "}
           <span className="text-accent font-semibold">MCE Agency</span>.
         </motion.p>
