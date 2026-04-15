@@ -8,6 +8,7 @@ import site3 from "@/assets/portfolio-site-3.jpg";
 import site4 from "@/assets/portfolio-site-4.jpg";
 import site5 from "@/assets/portfolio-site-5.jpg";
 import site6 from "@/assets/portfolio-site-6.jpg";
+import site7 from "@/assets/portfolio-site-7.jpg";
 import logo1 from "@/assets/portfolio-logo-1.jpg";
 import logo2 from "@/assets/portfolio-logo-2.jpg";
 import logo3 from "@/assets/portfolio-logo-3.jpg";
@@ -29,6 +30,7 @@ const sites = [
   { img: site5, name: "Delwin Voyage", desc: "Agence de voyage", url: "https://delwinvoyage.sn/" },
   { img: site4, name: "Clinique Auto", desc: "Garage", url: "https://lacliniqueauto.com/" },
   { img: site6, name: "RPI", desc: "Site vitrine Immeuble", url: "https://rpi-bardage.com/" },
+  { img: site7, name: "Marimika", desc: "Site e-commerce", url: "https://marimika.com/" },
 ];
 
 const logos = [
