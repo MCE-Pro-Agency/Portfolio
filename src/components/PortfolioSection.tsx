@@ -27,10 +27,6 @@ const sites = [
   { img: site1, name: "Mce Pro Agency", desc: "Agence de communication digitale", url: "https://mce-pro.agency/" },
   { img: site2, name: "Timalove", desc: "Plateforme site de rencontre", url: "https://www.tima-love.com/" },
   { img: site3, name: "Garage mécanique Amilly", desc: "Site vitrine garagiste", url: "https://garage-mecanique-amilly.com/" },
-  { img: site5, name: "Delwin Voyage", desc: "Agence de voyage", url: "https://delwinvoyage.sn/" },
-  { img: site4, name: "Clinique Auto", desc: "Garage", url: "https://lacliniqueauto.com/" },
-  { img: site6, name: "RPI", desc: "Site vitrine Immeuble", url: "https://rpi-bardage.com/" },
-  { img: site7, name: "Marimika", desc: "Site e-commerce", url: "https://marimika.com/" },
 ];
 
 const logos = [
