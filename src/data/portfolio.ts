@@ -10,6 +10,7 @@ import logo2 from "@/assets/portfolio-logo-2.jpg";
 import logo3 from "@/assets/portfolio-logo-3.jpg";
 import video1 from "@/assets/portfolio-video-1.jpg";
 import video2 from "@/assets/portfolio-video-2.jpg";
+import site8 from "@/assets/portfolio-site-8.jpg";
 
 export const sites = [
   { img: site1, name: "Mce Pro Agency", desc: "Agence de communication digitale", url: "https://mce-pro.agency/" },
@@ -19,6 +20,7 @@ export const sites = [
   { img: site4, name: "Clinique Auto", desc: "Garage", url: "https://lacliniqueauto.com/" },
   { img: site6, name: "RPI", desc: "Site vitrine Immeuble", url: "https://rpi-bardage.com/" },
   { img: site7, name: "Marimika", desc: "Site e-commerce", url: "https://marimika.com/" },
+  { img: site8, name: "AMANYA", desc: "Distribution & e-commerce", url: "https://amanya-distribution.com/" },
 ];
 
 export const logos = [
