@@ -20,6 +20,7 @@ export const sites = [
   { img: site4, name: "Clinique Auto", desc: "Garage", url: "https://lacliniqueauto.com/" },
   { img: site6, name: "RPI", desc: "Site vitrine Immeuble", url: "https://rpi-bardage.com/" },
   { img: site7, name: "Marimika", desc: "Site e-commerce", url: "https://marimika.com/" },
+  { img: site8, name: "AMANYA", desc: "Distribution & e-commerce", url: "https://amanya-distribution.com/" },
 ];
 
 export const logos = [
