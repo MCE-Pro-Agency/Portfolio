@@ -10,6 +10,7 @@ import logo2 from "@/assets/portfolio-logo-2.jpg";
 import logo3 from "@/assets/portfolio-logo-3.jpg";
 import video1 from "@/assets/portfolio-video-1.jpg";
 import video2 from "@/assets/portfolio-video-2.jpg";
+import site8 from "@/assets/portfolio-site-8.jpg";
 
 export const sites = [
   { img: site1, name: "Mce Pro Agency", desc: "Agence de communication digitale", url: "https://mce-pro.agency/" },
