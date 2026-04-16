@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Play, X, Globe, Palette, Video } from "lucide-react";
+import { ExternalLink, Play, X, Globe, Palette, Video, ChevronDown, ChevronUp } from "lucide-react";
 
 import site1 from "@/assets/portfolio-site-1.jpg";
 import site2 from "@/assets/portfolio-site-2.jpg";
@@ -23,10 +23,20 @@ const categories = [
 
 type Category = (typeof categories)[number]["key"];
 
+const INITIAL_COUNT: Record<Category, number> = {
+  sites: 3,
+  logos: 3,
+  videos: 2,
+};
+
 const sites = [
   { img: site1, name: "Mce Pro Agency", desc: "Agence de communication digitale", url: "https://mce-pro.agency/" },
   { img: site2, name: "Timalove", desc: "Plateforme site de rencontre", url: "https://www.tima-love.com/" },
   { img: site3, name: "Garage mécanique Amilly", desc: "Site vitrine garagiste", url: "https://garage-mecanique-amilly.com/" },
+  { img: site5, name: "Delwin Voyage", desc: "Agence de voyage", url: "https://delwinvoyage.sn/" },
+  { img: site4, name: "Clinique Auto", desc: "Garage", url: "https://lacliniqueauto.com/" },
+  { img: site6, name: "RPI", desc: "Site vitrine Immeuble", url: "https://rpi-bardage.com/" },
+  { img: site7, name: "Marimika", desc: "Site e-commerce", url: "https://marimika.com/" },
 ];
 
 const logos = [
@@ -39,10 +49,34 @@ const videos = [
   { img: video1, name: "Film Corporate MCE", desc: "Présentation d'entreprise", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
   { img: video2, name: "Event Highlight", desc: "Couverture événementielle", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
 ];
- 
+
+const dataMap: Record<Category, readonly any[]> = { sites, logos, videos };
+
 const PortfolioSection = () => {
   const [active, setActive] = useState<Category>("sites");
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<Record<Category, boolean>>({
+    sites: false,
+    logos: false,
+    videos: false,
+  });
+
+  const handleCategoryChange = (key: Category) => {
+    setActive(key);
+  };
+
+  const toggleExpand = () => {
+    setExpanded((prev) => ({ ...prev, [active]: !prev[active] }));
+  };
+
+  const isExpanded = expanded[active];
+  const totalItems = dataMap[active].length;
+  const initialCount = INITIAL_COUNT[active];
+  const hasMore = totalItems > initialCount;
+
+  const visibleSites = isExpanded ? sites : sites.slice(0, INITIAL_COUNT.sites);
+  const visibleLogos = isExpanded ? logos : logos.slice(0, INITIAL_COUNT.logos);
+  const visibleVideos = isExpanded ? videos : videos.slice(0, INITIAL_COUNT.videos);
 
   return (
     <section id="portfolio" className="py-20 md:py-28 bg-background">
@@ -66,7 +100,7 @@ const PortfolioSection = () => {
           {categories.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
-              onClick={() => setActive(key)}
+              onClick={() => handleCategoryChange(key)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
                 active === key
                   ? "bg-primary text-primary-foreground shadow-lg"
@@ -89,9 +123,13 @@ const PortfolioSection = () => {
               transition={{ duration: 0.4 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {sites.map((s) => (
-                <div
+              {visibleSites.map((s) => (
+                <motion.div
                   key={s.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
                   className="group relative bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="relative overflow-hidden">
@@ -118,7 +156,7 @@ const PortfolioSection = () => {
                     <h3 className="text-lg font-bold text-card-foreground">{s.name}</h3>
                     <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           )}
@@ -132,9 +170,13 @@ const PortfolioSection = () => {
               transition={{ duration: 0.4 }}
               className="grid grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {logos.map((l) => (
-                <div
+              {visibleLogos.map((l) => (
+                <motion.div
                   key={l.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
                   onClick={() => setLightbox(l.img)}
                   className="group cursor-pointer bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                 >
@@ -155,7 +197,7 @@ const PortfolioSection = () => {
                     <h3 className="font-bold text-card-foreground">{l.name}</h3>
                     <p className="text-xs text-muted-foreground mt-1">{l.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           )}
@@ -169,9 +211,13 @@ const PortfolioSection = () => {
               transition={{ duration: 0.4 }}
               className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
             >
-              {videos.map((v) => (
-                <div
+              {visibleVideos.map((v) => (
+                <motion.div
                   key={v.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
                   className="group relative bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="relative overflow-hidden">
@@ -198,11 +244,31 @@ const PortfolioSection = () => {
                     <h3 className="text-lg font-bold text-card-foreground">{v.name}</h3>
                     <p className="text-sm text-muted-foreground mt-1">{v.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Voir plus / Voir moins */}
+        {hasMore && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={toggleExpand}
+              className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              {isExpanded ? (
+                <>
+                  Voir moins <ChevronUp size={18} />
+                </>
+              ) : (
+                <>
+                  Voir plus <ChevronDown size={18} />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}
