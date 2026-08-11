@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { ArrowRight, CheckCircle2, Globe2, MessageCircle } from "lucide-react";
 
 const services = [
   "Site vitrine",
@@ -50,7 +51,7 @@ const CtaSection = () => {
     const body = encodeURIComponent(
       `Prénom : ${firstName}\nNom : ${lastName}\nEmail : ${email}\n\nServices souhaités :\n${selectedServices.map((s) => `- ${s}`).join("\n")}`
     );
-    window.location.href = `mailto:contact@mce-agency.com?subject=${subject}&body=${body}`;
+    window.location.href = "mailto:mceproagency@gmail.com?subject=" + subject + "&body=" + body;
 
     toast.success("Votre demande a été préparée !");
     setOpen(false);
@@ -62,41 +63,30 @@ const CtaSection = () => {
 
   return (
     <>
-      <section id="contact" className="py-20 md:py-28 bg-gradient-to-br from-navy via-primary to-navy-deep relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(195_100%_50%/0.1),transparent_60%)]" />
-        <div className="container px-4 relative z-10 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-primary-foreground max-w-3xl mx-auto leading-tight"
-          >
-            Et si votre projet était{" "}
-            <span className="text-gradient-gold">le prochain</span> ?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-6 text-primary-foreground/60 max-w-xl mx-auto text-lg"
-          >
-            Parlons de votre vision. Notre équipe est prête à donner vie à vos ambitions digitales.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-10"
-          >
-            <button
-              onClick={() => setOpen(true)}
-              className="inline-flex px-8 py-4 bg-accent text-accent-foreground font-bold text-base rounded-lg hover:bg-accent/80 transition-all duration-300 hover:scale-105 shadow-lg shadow-accent/20"
-            >
-              Demander un devis
-            </button>
-          </motion.div>
+      <section id="contact" className="relative overflow-hidden bg-gradient-to-br from-navy via-primary to-navy-deep py-14 md:py-20">
+        <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-accent/15 blur-3xl" />
+        <div className="container relative z-10 px-4">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Un projet en tête ?</p>
+              <h2 className="mt-4 max-w-3xl text-3xl font-bold leading-tight text-primary-foreground md:text-5xl">Passons de votre idée à une solution <span className="text-gradient-gold">qui vous ressemble.</span></h2>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/70">Expliquez-nous simplement votre besoin. Nous vous aidons à choisir la bonne direction, sans engagement et sans jargon.</p>
+              <div className="mt-9 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+                <a href="https://mce-senegal.com/." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-lg border border-primary-foreground/25 px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10"><Globe2 size={17} /> Site officiel MCE</a>
+                <button onClick={() => setOpen(true)} className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-lg shadow-accent/20 transition-transform hover:scale-105">Demander un devis <ArrowRight size={17} /></button>
+                <a href="https://wa.me/221781839973" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-lg border border-primary-foreground/25 px-5 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary-foreground/10"><MessageCircle size={17} /> Écrire sur WhatsApp</a>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/10 p-7 backdrop-blur-md md:p-9">
+              <p className="text-lg font-bold text-primary-foreground">Ce qui se passe ensuite</p>
+              <ul className="mt-6 space-y-5">
+                {["Un premier échange pour comprendre votre besoin", "Une recommandation claire et adaptée", "Un devis détaillé avant de commencer"].map((item) => (
+                  <li key={item} className="flex gap-3 text-primary-foreground/80"><CheckCircle2 size={21} className="mt-0.5 shrink-0 text-accent" /> {item}</li>
+                ))}
+              </ul>
+              <p className="mt-7 border-t border-primary-foreground/15 pt-6 text-sm text-primary-foreground/55">Réponse rapide • Accompagnement personnalisé • Dakar & international</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -11,6 +11,9 @@ import logo3 from "@/assets/portfolio-logo-3.jpg";
 import video1 from "@/assets/portfolio-video-1.jpg";
 import video2 from "@/assets/portfolio-video-2.jpg";
 import site8 from "@/assets/portfolio-site-8.jpg";
+import flyer1 from "@/assets/portfolio-flyer-1.png";
+import flyer2 from "@/assets/portfolio-flyer-2.png";
+import flyer3 from "@/assets/portfolio-flyer-3.png";
 
 export const sites = [
   { img: site1, name: "Mce Pro Agency", desc: "Agence de communication digitale", url: "https://mce-pro.agency/" },
@@ -32,4 +35,10 @@ export const logos = [
 export const videos = [
   { img: video1, name: "Film Corporate MCE", desc: "Présentation d'entreprise", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
   { img: video2, name: "Event Highlight", desc: "Couverture événementielle", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+];
+
+export const flyers = [
+  { img: flyer1, name: "Lancez votre projet", desc: "Flyer promotionnel — solutions digitales" },
+  { img: flyer2, name: "Business Networking", desc: "Flyer événementiel — soirée professionnelle" },
+  { img: flyer3, name: "Boostez vos réseaux", desc: "Flyer commercial — communication sociale" },
 ];

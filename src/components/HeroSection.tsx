@@ -1,29 +1,86 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import heroImage from "@/assets/hero-mce.png";
+
+const creations = ["un site web", "un logo", "un flyer", "une vidéo"];
 
 const HeroSection = () => {
+  const reduceMotion = useReducedMotion();
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (reduceMotion) {
+      setDisplayedText(creations[0]);
+      return;
+    }
+
+    const word = creations[wordIndex];
+    const complete = displayedText === word;
+    const empty = displayedText === "";
+    const delay = complete && !deleting ? 1400 : deleting ? 55 : 90;
+
+    const timer = window.setTimeout(() => {
+      if (complete && !deleting) {
+        setDeleting(true);
+      } else if (empty && deleting) {
+        setDeleting(false);
+        setWordIndex((current) => (current + 1) % creations.length);
+      } else {
+        setDisplayedText(word.slice(0, displayedText.length + (deleting ? -1 : 1)));
+      }
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [deleting, displayedText, reduceMotion, wordIndex]);
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-blue"
+      className="relative min-h-screen flex items-center overflow-hidden bg-navy-deep bg-cover bg-[72%_center] md:bg-center"
+      style={{ backgroundImage: `url(${heroImage})` }}
     >
-      <div className="absolute inset-0 bg-navy-deep/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy-deep/65 to-navy-deep/10" />
+      <motion.div
+        aria-hidden="true"
+        className="absolute left-[8%] top-[18%] h-48 w-48 rounded-full bg-accent/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [0, 35, 0], y: [0, -25, 0], scale: [1, 1.15, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute bottom-[12%] left-[45%] h-64 w-64 rounded-full bg-blue-400/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [0, -30, 0], y: [0, 25, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      <div className="relative z-10 container text-center px-4">
+      <div className="relative z-10 container px-4 pt-20">
+        <div className="max-w-3xl text-left">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight max-w-4xl mx-auto"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight"
         >
-          Donnez vie à votre{" "}
-          <span className="text-gradient-gold">image digitale</span>
+          Donnez vie à votre image avec{" "}
+          <span className="block mt-2 min-h-[1.15em] text-gradient-gold" aria-live="polite">
+            {displayedText}
+            <motion.span
+              aria-hidden="true"
+              className="ml-1 inline-block h-[0.82em] w-[3px] bg-accent align-baseline"
+              animate={reduceMotion ? undefined : { opacity: [1, 0, 1] }}
+              transition={{ duration: 0.75, repeat: Infinity }}
+            />
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto font-body"
+          className="mt-6 text-lg md:text-xl text-primary-foreground/80 max-w-2xl font-body"
         >
           centralisez vos textes, projets et équipes dans une seule
           plateforme. Optimisez votre productivité et développez votre activité avec{" "}
@@ -34,7 +91,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          className="mt-10 flex flex-col sm:flex-row gap-4"
         >
           <a
             href="https://wa.me/"
@@ -52,7 +109,18 @@ const HeroSection = () => {
             Voir nos réalisations
           </a>
         </motion.div>
+        </div>
       </div>
+
+      <motion.a
+        href="#portfolio"
+        aria-label="Découvrir nos réalisations"
+        className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-primary-foreground/70 transition-colors hover:text-accent"
+        animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <ChevronDown size={30} />
+      </motion.a>
     </section>
   );
 };

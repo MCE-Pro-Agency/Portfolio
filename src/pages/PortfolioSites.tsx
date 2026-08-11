@@ -10,7 +10,7 @@ const PortfolioSites = () => (
     <Navbar />
     <section className="pt-28 pb-20 bg-background">
       <div className="container px-4">
-        <Link to="/#portfolio" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
+        <Link to="/realisations" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
           <ArrowLeft size={18} /> Retour
         </Link>
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-14">

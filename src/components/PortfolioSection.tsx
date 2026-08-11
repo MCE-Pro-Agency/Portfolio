@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Play, X, Globe, Palette, Video, ChevronRight } from "lucide-react";
+import { ExternalLink, Play, X, Globe, Palette, Video, ChevronRight, FileImage } from "lucide-react";
 import { Link } from "react-router-dom";
-import { sites, logos, videos } from "@/data/portfolio";
+import { sites, logos, videos, flyers } from "@/data/portfolio";
 
 const categories = [
   { key: "sites", label: "Sites Web", icon: Globe, path: "/portfolio/sites" },
   { key: "logos", label: "Logos", icon: Palette, path: "/portfolio/logos" },
   { key: "videos", label: "Vidéos", icon: Video, path: "/portfolio/videos" },
+  { key: "flyers", label: "Flyers", icon: FileImage, path: "/portfolio/flyers" },
 ] as const;
 
 type Category = (typeof categories)[number]["key"];
 
-const INITIAL_COUNT: Record<Category, number> = { sites: 3, logos: 3, videos: 2 };
+const INITIAL_COUNT: Record<Category, number> = { sites: 3, logos: 3, videos: 2, flyers: 3 };
 
 const PortfolioSection = () => {
   const [active, setActive] = useState<Category>("sites");
@@ -22,12 +23,13 @@ const PortfolioSection = () => {
   const visibleSites = sites.slice(0, INITIAL_COUNT.sites);
   const visibleLogos = logos.slice(0, INITIAL_COUNT.logos);
   const visibleVideos = videos.slice(0, INITIAL_COUNT.videos);
+  const visibleFlyers = flyers.slice(0, INITIAL_COUNT.flyers);
 
-  const dataMap: Record<Category, readonly any[]> = { sites, logos, videos };
+  const dataMap: Record<Category, readonly any[]> = { sites, logos, videos, flyers };
   const hasMore = dataMap[active].length > INITIAL_COUNT[active];
 
   return (
-    <section id="portfolio" className="py-20 md:py-28 bg-background">
+    <section id="portfolio" className="bg-background py-14 md:py-20">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,7 +46,7 @@ const PortfolioSection = () => {
         </motion.div>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-2 md:gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
           {categories.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
@@ -117,6 +119,25 @@ const PortfolioSection = () => {
                   <div className="p-5">
                     <h3 className="text-lg font-bold text-card-foreground">{v.name}</h3>
                     <p className="text-sm text-muted-foreground mt-1">{v.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {active === "flyers" && (
+            <motion.div key="flyers" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {visibleFlyers.map((flyer) => (
+                <div key={flyer.name} onClick={() => setLightbox(flyer.img)} className="group cursor-pointer bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                  <div className="relative overflow-hidden">
+                    <img src={flyer.img} alt={flyer.name} loading="lazy" width={800} height={1000} className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-navy-deep/55 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-primary-foreground font-semibold text-sm">Agrandir</span>
+                    </div>
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="font-bold text-card-foreground">{flyer.name}</h3>
+                    <p className="text-xs text-muted-foreground mt-1">{flyer.desc}</p>
                   </div>
                 </div>
               ))}
